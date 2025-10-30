@@ -1,0 +1,56 @@
+第7章-MySQL的基本函数
+
+可以直接用SELECT语句选择结果
+
+一、Numeric Functions 数值函数
+1. 常用函数
+①round(xx, xx)：四舍五入；保留小数点的四舍五入
+②truncate(xx, xx)：移除几位小数后的所有数据
+③ceiling：返回大于等于这个数的整数
+④floor：小于等于这个数的整数
+⑤ABS(x)：绝对值
+⑥RAND()：生成0-1的随机浮点数
+
+二、string functions 字符串函数
+1. 常用函数
+①LENGTH('sky')：计算字符串的长度
+②UPPER/LOWER('')：将字母转换为大写或者小写
+③LTRIM(left trim)/RTRIM/TRIM：消除字符前/后/前+后的空格
+④LEFT/RIGHT：获得字符串从左/右数起的x个字符
+	SUBSTRING：从x个开始，选择y个字符，y可以不写
+⑤LOCATE：返回具体字符串的位置，只能返回第一个出现的位置
+⑥REPLACE：把一个字符串中的某一些换成另一些，三个参数
+⑦CONCAT：串联两个字符串为一个
+
+三、Date functions 日期函数
+1. 常用函数
+①NOW：当前日期和时间
+	CURDATE：只返回日期
+	CURTIME：只返回时间
+②YEAR/MONTH/DAY/HOUR/MINUTE/SECOND(NOW())，返回整值
+	DAYNAME/MONTHNAME(NOW())，返回字符串
+③EXTRACT(YEAR FROM NOW())，规范sql语句
+
+四、Formatting Dates and Times 格式化日期和时间
+1. 年份，日期，月份，小写和大写的返回不一样
+https://dev.mysql.com/doc/refman/8.4/en/date-and-time-functions.html
+
+五、Calculating Dates and Times
+1. 两个日期的间隔，或者在日期上加一两天等
+
+六、The IFNULL and COALESCE Functions
+1. 修改空值的field
+2. ifnull是用其他内容替换空值，coalesce会提供一堆值，并返回第一个非空值
+
+七、The IF Function
+1. 与union功能类似，写起来更简单一些
+
+八、The CASE Operator
+1. multiple test expression，返回不同值，比if的情况多，可以代替多个union连用的情况
+2. 判断条件存在先后，所以不用把筛选写成补集的形式
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+第6章-编写复杂查询
+
+一、恢复原本的数据库
+
+二、Subqueries 子查询
+
+三、IN Operator
+1. 在where过滤中使用
+
+四、Subqueries vs Joins
+1. 课程例子中，用子查询的方法更直接易读，但如果子查询太复杂，用连接的方法也不错
+2. 可以先写子查询，再写总体查询
+
+五、The All Keyword
+1. 有的子查询会返回一个数，有的是好几个数，有的甚至是一张表，需要注意对症下药
+2. max方法和all方法可以替换使用，看怎么理解自然语言意思
+
+六、The Any Keyword
+1. '= ANY'与'IN'功能一致
+
+七、Correlated Subqueries相关子查询
+1. 引用了来自外查询表格的数据，对于外查询的每一行，需要每一次都重新读取，会耗费更多时间和存储
+
+八、The EXISTS Operator
+1. 基于相关子查询，在where中使用，判断是否有exist符合子查询条件的行。
+2. 相比于子查询：IN()，如果子查询返回的数字过多，IN的方法会比较慢。而exist只会根据条件，对where返回true或false
+
+九、Subqueries in the SELECT Clause SELECT子句中的子查询
+1. 与聚类然后分组的效果的不同在于，增加一整个列，都是子查询的结果，并可以进行后续计算
+2. 语法似乎不太精准，先往后学吧
+
+十、Subqueries in the FROM Clause
+1. 把整个query写成一个表格来FROM
+2. 必须给一个别名
+3. VIEW是更好的方法

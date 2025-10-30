@@ -1,0 +1,66 @@
+在多张表格中选择数据
+
+一、Inner joins 内连接
+1. 表前缀：orders.customer_id
+2. 省略名称：FROM orders AS o; JOIN customers AS c，其他地方也必须要使用简称；as可以省略
+3. 思路：先选所有列*，再从合并的表中挑出需要的列
+4*. sql的合并并不需要像stata的merge一样挑选一对多或者多对一，可以直接运行
+
+二、joining across databases，跨数据库链接
+1. 有可能两个数据库中没有重复的表，但是需要调用另一个数据库中的，所以跨数据库join
+ 	不需要use
+2. 只需要给不在当前use中的数据库中的表，即加粗的数据库，之前加前缀
+
+三、self joins，自链接
+1. hr中，雇员的领导同样是表中的雇员
+2. 给同样的表取不同的别名
+
+四、Joining multiple tables 多表连接
+多个join
+
+五、Compund Join Conditions 复合连接条件
+1. 存在不用单一的id列来识别表内数据的情况，order item表duplicate
+——用两个列联合，来唯一定义一行。即两个primary key主键
+2. ON+AND
+
+六、implicit join syntax 隐式链接语法
+尽量别用，如果忘记打where语句，会显示交叉连接，笛卡尔积、
+
+七、Outer Joins 外连接
+1. join默认为inner join，还有outer join，outer可以在有left和right的情况下可以被省略
+2. join只连接了在两个表中都有数据的，但有记录没有订单的客户就不会被查询到
+3. left是指from后边的表，right指join后的表，执行会返回所有左表的记录，不管是否满足join的条件
+
+八、Outer Joins Between Multiple Tables 多表外连接
+1. 避免使用右链接，特别在多表链接中，容易造成表之间的关系混乱，best practice是尽量使用左连接
+2. 再一次：leftjoin指的是无论满不满足ON后的条件，都链接FROM表后的所有数据
+
+九、Self Outer Joins 自外链接
+1. 自连接案例中，没有管理人员的资料，使用左外连接解决这个问题
+
+十、The USING Clause
+1. 简化ON条件，使代码更易懂，外连接和内连接都可以
+2. 但是链接的两个列名称不一样的时候不能使用
+3. 多个PK时，用逗号分隔即可
+
+十一、Natural Joins 自然连接
+不太常用，可能出现意料之外的结果，了解即可
+
+十二、cross joins 交叉链接
+1. 链接所有数据，不需写条件。
+2. 运用在大中小对应红绿蓝这样的形式中
+3. 隐式语法
+
+十三、Unions 联合
+1. 合并两段查询的数据
+2. 注意列数必须一样，决定列名字的在第一个查询中
+3. ORDER BY写在UNION之后
+
+
+
+
+
+
+
+
+

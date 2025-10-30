@@ -1,0 +1,31 @@
+1. introduction
+
+2. What is SQL
+2.1 database: A database is a collection of data stored in a format that can easily be accessed.
+①DBMS: database management system
+②SQL: structured query language, 用以处理关系型DBMS，查询或修改数据
+③不同的rdbms: mysql, sqlserver by Microsoft, oracle
+④非关系型的数据库无法用sql查询。
+⑤读sequel或者SQL都可以
+
+3. Installing MySQL on Windows
+Server、Workbench、Shell、Router、Documentation、Samples
+
+4. creatingthe database
+navigator，administration是用来做操作的，schemas是用来选择数据库的，sys是mysql内部运行的数据库
+snippets指代码片段，脚本
+闪电图标：执行选中部分或所有代码
+
+table表，view线路连接和生成报告，function可以存储需要使用的函数、即功能
+customer和order的customer_id column是相关的，是关系型数据库的一种表现
+
+5. what you'll learn学习路径
+①1-4节：基础操作，retrieving获取，inserting插入，更新和删除数据
+②5-7节：summarizing汇总数据创建报告，writing complex queries子查询编写复杂查询，built-in functions即mysql基本内置函数
+③8-9节：views创建视图，stored procedures存储过程和函数
+④10-12节：触发器，事件，transaction事务，concurrency并发
+⑤13-15节：designing databases，indexing for high performance为了实现高效而使用的索引，securing databases保护数据库
+
+
+
+

@@ -1,0 +1,67 @@
+-- 代表注释，sql不会执行
+作为名称的两个单词之间链接要加下划线，用空格连接的话要用单引号或双引号括起来
+
+一、 the SELECT statement，在单一表格检索数据
+1. 选择一个数据库，写的查询会针对数据库执行：
+①USE/双击调用一个schemas
+②select+from，*表示所有列。select first_name, last_name
+③WHERE xxx = x，筛选
+④ORDER BY xxx，查询
+——以上除了select，其他都是子句，可选
+——from，where，order by的顺序不能改变
+——不用换行也可以
+
+二、 the SELECT Clause，选择子句
+1. 选择查询的列，对数字列进行计算，为新列命名
+SELECT 
+	first_name, last_name, points, 
+    (points + 10) * 100 AS 'discount factor'
+FROM customers;
+2. 返回不重复的结果: DISTINCT
+3. exercise
+SELECT 
+	name, 
+	unit_price, 
+    unit_price * 1.1 AS new_price
+FROM products;
+
+三、the WHERE Clause
+1. 筛选与运算符
+> >= 
+< <= 
+=
+!= <>
+大小写无所谓
+日期格式：'xxxx-xx-xx'
+
+四、AND, OR NOT Operators
+1. 顺序：and优先
+2. 可以在筛选中直接运算，跟select类似
+
+五、IN Operator，用于包含多个equal的条件
+1. 算术预算优先于逻辑运算，对于
+WHERE state = 'VA' OR 'GA' OR 'FL'，会先计算=，再计算or，字符串和布尔值不能共同计算。正确：
+WHERE state = 'VA' OR state = 'GA' OR state = 'FL' 
+2. IN：IN （……）
+
+六、BETWEEN Opertator
+
+七、like
+1. '%'，字符串中的百分号表示任意数量的字符，0个也可以；'_'下划线用于表示一个字符
+2. 用于检索遵循特定字符串模式的行
+
+八、REGEXP regular expression 正则表达式
+1. 是like的进化代码，功能更强大
+2. ^表示必须由后边的单词打头，$表示结尾，|表示logical or，[]表示括号内任意的单字符，[-]代表一个范围
+
+九、IS NULL 查找缺失值
+
+十、ORDER BY
+1. 扳手图标进入工作模式，
+①修改列，添加列，删除列
+②primary key，unique identify each element
+2. order by 可以排序select xx AS xx而创建的列，这与前面的不同
+
+十一、LIMIT：限制出现的数量
+1. offset：跳过前x条，获得之后的x条
+2. LIMIT永远放在最后

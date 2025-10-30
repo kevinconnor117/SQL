@@ -1,0 +1,23 @@
+汇总数据
+
+执行顺序：FROM → JOIN → WHERE → GROUP BY → HAVING → SELECT → DISTINCT → ORDER BY → LIMIT
+
+一、 Aggregate Functions 聚合函数：取系列值并聚合，再导出一个单一值
+1. max()、min()、avg()、sum()、count()
+2. 日期也可以被计算和比较
+3. count只能返回非空值，DINSTINCT可以不对重复值计数
+
+二、Group By
+1. 将聚合值分类，会自动对应。使用group by分组后，所有聚合方法都在分组的语境下进行，会对每个组进行分别聚类
+2. 顺序：where——group by——order by
+3. 如果使用了聚合函数sum，那么如果select非聚合列，则必须用groupby指定非聚合列
+——因为SUM把多行合并成了一行，而此时SQL不知道要选择哪个date或其他非聚合列中的元素，导致报错。
+——group by必须有聚合，也必须有select的所有东西
+
+三、HAVING
+1. where会先过滤再分组，过滤在分组之前，所以无法筛选聚类后的分组数据，需要用having接在groupby之后
+2. 但是不能选择没有SELECT的列，这与WHERE不同
+
+四、ROLLUP
+1. 单个分组条件时额外多一行汇总所有聚合值，多个分组条件时每一个都汇总一次
+2. 不是一个标准语言，其他DBMS中可能用不了

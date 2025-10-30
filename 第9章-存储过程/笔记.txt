@@ -1,0 +1,67 @@
+第9章-存储过程
+
+一、 What are Stored Procedures
+1. 把sql代码从应用开发代码中剥离出来，存储到存储过程或者函数中。
+2. 存储过程：一个包含一堆SQL代码的数据库对象。
+benefit: 
+①store and organize SQL在应用代码里，通过调用这些过程，来获取数据或保存数据
+②faster execution，DBMS会对其进行一定的优化
+③data security，分配权限
+
+二、Creating a Stored Procedure
+1. BEGIN-END是一个过程，中间的是procedure的body主体。body中可能有很多查询语句，每一条都要用分号隔开，MYSQL要求即使有一条也要用分号结尾
+2. trick: 需要把整个procedure封装给SQL，不然分号就会直接结束语句，所以此时需要使用DELIMITER修改默认分隔符，改成不冲突现有符号的分隔符，最后再修改回来
+3. 在导航面板中打开就能看到了，可以直接执行；或者使用call来调用
+
+三、Creating Procedures Using MySQLWorkbench
+1. 直接在导航面板右键存储过程，新建，在新的界面中专注于写查询就好，不需要修改分隔符，sql会将代码转译成严格无歧义的代码
+
+四、Dropping Procedures
+1. 加一个drop语句，就可以保存为脚本，再随时删除再重建了（放入git源码控制）
+
+五、Parameters 参数
+1. 可以添加多个参数，用逗号分隔即可
+2. sql中的参数是必填的
+3. 类似前端窗口，可以做到输入后查询符合的数据
+
+六、Parameters with Default Values 带默认值的参数
+1. 要注意此处和不在存储过程中输入不一样，而是查询了一个NULL，不是''
+2. trick：默认返回所有客户
+3. argument实际参数和parameters形式参数，后者是占位符，是在过程和函数中定义的坑位；提供给这些空位的实际值叫做argument
+
+七、Parameter Validation 参数验证
+1. 实现只更新给定的列，还能通过if来验证要存储的数据是否合理
+2. signal clause、sqlstate error列表
+3. 只保留关键的逻辑验证。在用户端接受输入信息的时候，再在应用中使用更多的验证，比起访问数据库，在应用中检测和报告错误更快速
+
+八、Output Parameters 输出参数
+只是映射了查询的列名，或者说把OUT参数传递给了过程输出的值，不建议使用
+
+九、Variables 变量
+1. user or session variables：set @xx。在客户会话过程中被保存，从数据库断线时即清空
+2. local variable：declare。在存储过程和函数内定义的。存储过程的任务完成后即清空，一般使用这些变量在存储过程中执行计算任务。
+3. 用select定义就不需要设置默认值了
+
+十、Functions 函数
+1. 与存储过程的主要区别在于：函数只能返回单一值
+2. 同样右键创建函数，return描述声明了返回的值的类型
+3. 接着需要声明函数属性
+①DETERMINISTIC：同样的输入（一组值），只会返回相同的值，不会因为其他而改变（比如输入客户id可能会有多个发票，但计算税额是公式所确定的）
+②READS SQL DATA：有select来读取数据
+③MODIFIES SQL DATA：函数中有插入，更新或者删除
+4. 一定要返回一个值
+5. 可以像过程那样单独存储
+
+十一、Other Conventions 其他约定
+前缀fn，proc；驼峰式procGetRiskFactor；getRiskFactor；下划线等等
+
+
+
+
+
+
+
+
+
+
+

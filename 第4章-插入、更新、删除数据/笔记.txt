@@ -1,0 +1,52 @@
+插入、更新和删除数据
+
+一、Column Attributes列属性
+1. 数据类型
+①INT：integer，全是1234这样的全数，没有小数点
+②VARCHAR：variable character，可变字符，50指50个字符，此时不会再插入别的字符填满导致空间占用
+③CHAR：CHAR(50)会填满所有字符——一般都用VARCHAR
+④
+2. column类型
+①PK：主键
+②NN：not null非空值，决定了该列是否可以是空值
+③AI：auto increment自动递增，通常用在PK上
+④default/expression：默认值
+
+二、Inserting a Single Row
+1. 有默认数据的行可以通过insert into xx ()代码来省略
+
+三、Inserting Multiple Rows
+
+四、Inserting Hierarchical Rows
+1. 亲子关系，orders表为母，order_items为子，orders表中一个order可能有多个orderitem，即订单表的一行可能在订单项目表中有一子或多子。比如订单order_2有1、4、6三个产品、数量、单价
+2. 获取新增的order id，并插入order item子表：SQL的内置功能（比如电视的开关机）LAST_INSERT_ID
+3. 如果表格的每一列都需要处理，那就不用在insert into里指定具体的列了
+
+五、Creating a Copy of a Table
+1. 用于存档等，不会带入表格属性
+2. 子查询语句，可以定义CREATE TABLE 中想要包括的数据，先写好query再创建表
+3. truncate table删除所有数据，drop table删除表格
+
+六、Updating a Single Row
+1. 元素值可以直接写 DEFAULT 和 NULL
+2. 也可以写计算值
+3. 报错是数据类型的问题，后续解决
+
+七、Updating Multiple Rows
+1. mysql workbench的安全更新模式导致不能一次更新多条数据。edit-preferences-sql editor-other
+
+八、Using Subqueries in Updates
+1. 子查询返回数据，在WHERE()里使用。一般返回id列的数据
+2. 建议先独立运行子查询，确认结果，再运行整个
+3. IN语句中直接使用子查询，如果有多个项目不需要用逗号','隔开
+
+九、Deleting Rows
+
+十、Restoring the Databases
+file-open sql script-脚本文件，执行-刷新
+
+
+
+
+
+
